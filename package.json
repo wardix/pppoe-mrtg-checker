@@ -1,0 +1,22 @@
+{
+  "name": "pppoe-mrtg-checker",
+  "module": "src/main.ts",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "bun run --hot src/main.ts",
+    "build": "bun build --minify --outfile dist/main.js --target bun src/main.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/pg": "^8.11.12"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "mysql2": "^3.13.0",
+    "nats": "^2.28.2",
+    "pg": "^8.14.1",
+    "pino": "^9.6.0"
+  }
+}
