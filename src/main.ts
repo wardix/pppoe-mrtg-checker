@@ -219,7 +219,8 @@ async function processMessage(message: JsMsg): Promise<void> {
     const graphids: string[] = []
     graphHostIfaces.forEach(({ graphid, host, iface }) => {
       const csid = hostIfaceToCsid.get(`${host} ${iface}`)
-      rightGraphidToCsid.set(`${NIS_GRAPHID_PREFIX}${graphid}`, csid as number)
+      if (!csid) return
+      rightGraphidToCsid.set(`${NIS_GRAPHID_PREFIX}${graphid}`, csid)
       graphids.push(`${NIS_GRAPHID_PREFIX}${graphid}`)
     })
 
