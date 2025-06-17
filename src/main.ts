@@ -241,11 +241,14 @@ async function processMessage(message: JsMsg): Promise<void> {
     const mysqlConnection = await mysqlPool.getConnection()
     try {
       insertedGraphLink.forEach(async ({ graphid, csid }) => {
-        await mysqlConnection.execute(`
+        await mysqlConnection.execute(
+          `
           UPDATE CustomerServicesZabbixGraph
           SET OrderNo = OrderNo + 1
           WHERE CustServId = ?
-        `, [csid])
+        `,
+          [csid],
+        )
 
         const query = `
           INSERT INTO CustomerServicesZabbixGraph
